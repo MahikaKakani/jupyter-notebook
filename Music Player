@@ -1,0 +1,58 @@
+from pygame import *
+from tkinter import *
+global audio
+audio=input("enter file name: ")
+music=Tk()
+music.geometry("600x600")
+
+mixer.init()
+mixer.music.load(audio)
+
+def Play():
+    mixer.music.play()
+def Pause():
+    mixer.music.pause()
+def Resume():
+    mixer.music.unpause()
+def Stop():
+    mixer.music.stop()
+def quit():
+    mixer.music.stop()
+    music.destroy()
+    
+def Another():
+    global audio
+    audio=input("Enter another song (with .mp3): ")
+    mixer.init()
+    mixer.music.load(audio)
+    music.update()
+    file.set(f"Playing {audio} ")
+
+music.title("Music Player")
+label=Label(music,text="Welcome to the Python Made Music Player",font=('Comic Sans MS',15))
+label.place(x=130,y=0)
+
+name=StringVar()
+name.set("Playing Music... (You may add 'Another' file below)")
+e1=Entry(music,textvariable=name,width=50)
+e1.place(x=160,y=50)
+file=StringVar()
+e2=Entry(music,textvariable=file,width=50)
+e2.place(x=160,y=70)
+music.update()
+file.set(f"Playing {audio} ")
+
+play=Button(music,text="Play",command=Play)
+pause=Button(music,text="Pause",command=Pause)
+resume=Button(music,text="Resume",command=Resume)
+stop=Button(music,text="Stop",command=Stop)
+quit=Button(music,text="Quit",command=quit)
+another=Button(music,text='Another',command=Another)
+play.place(x=165,y=100)
+pause.place(x=205,y=100)
+resume.place(x=255,y=100)
+another.place(x=315,y=100)
+stop.place(x=375,y=100)
+quit.place(x=415,y=100)
+
+music.mainloop()
