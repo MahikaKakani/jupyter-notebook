@@ -1,0 +1,58 @@
+#Number Guessing Game
+
+# Build a Number guessing game, in which the user selects a range.
+# Let’s say User selected a range, i.e., from A to B, where A and B belong to Integer.
+# Some random integer will be selected by the system and the user has to guess that 
+# integer in the minimum number of guesses
+
+def random_integer(lower,upper):
+    rand=random.randint(lower,upper)
+    return rand
+
+
+def number_guessing_game():
+#     print("Please select a range: ")
+#     print("1-100 is A\n101-200 is B\n201 to 300 is C\n301 to 400 is D\n401 to 500 is E")
+#     rangee=input("Your choosen range is: ")
+    print("Please enter the lower and upper bounds of your chosen range!(eg. 1 100)")
+    lower,upper=int(input()),int(input())
+    x=round(math.log(upper-lower+1,2))    #way of writing, know from exploration!
+    print("You have",x,"chances to guess!")
+    rand=random_integer(lower,upper)
+    #print("rand is ",rand)
+    print("Guess the number from your choosen range: ")
+    count=1
+    guess2=0
+    while count<=x:
+        guess1=int(input(f"Guess no. {count}: "))
+        count=count+1
+        if guess1==rand:
+            print("Congratulations!")
+            print("You WON!")
+            return count
+        elif guess1>rand:
+            print("Try Again! You guessed too high!")
+        elif guess1<rand:
+            print("Try Again! You guessed too low!")
+    else:
+        count=0
+        print("OOPS! The chances are over... Better luck next time!")
+        return count
+
+import random
+import math
+
+print("***WELCOME TO THE NUMBER GUESSING GAME***")
+# print("***The player needs to select a range to move forward!***")
+print("Some random integer will be selected by the system and ",end="")
+print("YOU need to guess that integer in the minimum number of guesses")
+print("\nARE YOU READY? ",end="")
+agree=input("Yes(Y) or No(N) : ")
+if agree=='Y':
+    count=number_guessing_game()
+    if count==0:
+        print("Bye Bye!")
+    else:
+        print(f"You guessed correct in {count-1} attempts!")
+else:
+    print("Please visit again!\nThank You")
