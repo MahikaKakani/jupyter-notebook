@@ -1,0 +1,31 @@
+from pytube import YouTube
+from tkinter import *
+down=Tk()
+down.geometry()
+
+def download_video():
+    try:
+        down.update()
+        YouTube(link.get()).streams.first().download()
+#         print("Successfully downloaded")
+        link.set("Downloaded successfully!")
+    except Exception as e:
+        link.set("Some mistake is there!")
+        down.update()
+        link.set("Kindly give the correct link")
+#     return "Done! Kindly check"
+    
+# print("Enter the link below you want to download:\n")
+label=Label(down,text="YouTube Video Download Application",font=("Comic Sans MS",15))
+label.pack()
+myVar=StringVar()
+myVar.set("Enter link please...")
+e1=Entry(down,textvariable=myVar,width=30)
+e1.pack()
+link=StringVar()
+e2=Entry(down,textvariable=audio,width=30)
+e2.pack()
+button=Button(down,text="Download",command=download_video)
+button.pack()
+# print(download)
+down.mainloop()
