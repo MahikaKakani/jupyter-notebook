@@ -1,0 +1,72 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt   
+# these above three for numerical computation, data manipulation and visualization
+%matplotlib inline
+
+import chart_studio.plotly as py   #plotly library for building our graphs
+import plotly.graph_objs as go
+from plotly.offline import plot
+
+# for offline plotting
+from plotly.offline import download_plotlyjs,init_notebook_mode,plot,iplot
+init_notebook_mode(connected=True)
+
+stock_df=pd.read_csv('1613615-Stock_Price_data_set.csv')
+print(stock_df)
+
+print(stock_df.info())  # Can see no null values are there.
+
+stock_df['Date']=pd.to_datetime(stock_df['Date'])
+print(f"Dataframe contains stock prices between {stock_df.Date.min()} and {stock_df.Date.max()}")
+print(f'Total days = {(stock_df.Date.max()- stock_df.Date.min()).days} days')
+
+stock_df.describe()
+
+stock_df[['Open','High','Low','Close','Adj Close']].plot(kind='box')
+
+stock_df.plot(x='Date',y='Adj Close',kind='line')
+plt.show()
+
+# Building the regression model
+from sklearn.model_selection import train_test_split
+
+#for preprocessing
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
+
+# for model evaluation
+from sklearn.metrics import mean_squared_error as mse
+from sklearn.metrics import r2_score
+
+# train and test splitting of data
+X=np.array(stock_df.index).reshape(-1,1)
+Y=stock_df['Adj Close']   
+# Adj Close is the output variable. well, close and adj close are same in our dataset
+X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=0.3,random_state=100)
+# taking test size as 30% of the total and random state of 100
+
+# Feature Scaling
+scaler=StandardScaler().fit(X_train)
+
+# creating a linear Model
+from sklearn.linear_model import LinearRegression
+lm=LinearRegression()
+lm.fit(X_train,Y_train)
+y_pred_train=lm.predict(X_train)
+y_pred_test=lm.predict(X_test)
+
+plt.figure(figsize=(7,6))
+plt.scatter(X_test,Y_test,label='True Value')
+plt.plot(X_train,y_pred_train,label='Predicted Value',c='red')
+plt.legend()
+plt.show()
+
+r2_S1=r2_score(Y_train,y_pred_train)
+print(r2_S1)
+r2_S2=r2_score(Y_test,y_pred_test)
+print(r2_S2)
+mse1=mse(Y_train,lm.predict(X_train))
+print(mse1)
+mse2=mse(Y_test,lm.predict(X_test))
+print(mse2)
