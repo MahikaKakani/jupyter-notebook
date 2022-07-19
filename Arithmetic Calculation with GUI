@@ -1,0 +1,78 @@
+#Basic Arithmetic Calculation with GUI
+from tkinter import *
+calc=Tk()
+calc.geometry("450x450")
+x=0.0
+
+calc.title("Basic Arithmetic Calculations")
+label=Label(calc,text='***Welcome to the GUI Basic Arithmetic Operations***',font=('Comic Sans MS',15),fg='Blue')
+label.place(x=0,y=0)
+
+text=StringVar()
+text.set("Please give two numbers for calculation...")
+e1=Entry(calc,textvariable=text,width=50,fg='red')
+e1.place(x=100,y=40)
+
+lab1=StringVar()
+lab1.set("Number 1:")
+ee=Entry(calc,textvariable=lab1,width=10,bg='pink')
+ee.place(x=170,y=60)
+
+lab2=StringVar()
+lab2.set("Number 2:")
+ee1=Entry(calc,textvariable=lab2,width=10,bg='pink')
+ee1.place(x=170,y=80)
+
+### Input variables...
+num1=StringVar()
+e1=Entry(calc,text=num1,width=10)
+e1.place(x=240,y=60)
+
+num2=StringVar()
+e2=Entry(calc,text=num2,width=10)
+e2.place(x=240,y=80)
+
+result=StringVar()
+e4=Entry(calc,text=result,width=22,bg='light grey',fg='black')
+e4.place(x=170,y=120)
+
+def add():
+    x=float(num1.get())+float(num2.get())
+    calc.update()
+    result.set(f"{x}")
+def subtract():
+    calc.update()
+    x='{:.3f}'.format(float(num1.get())-float(num2.get()))
+    result.set(f"{x}")
+def multiply():
+    calc.update()
+    x='{:.5f}'.format(float(num1.get())*float(num2.get()))
+    result.set(f"{x}")
+def division():
+    calc.update()
+    x='{:.3f}'.format(float(num1.get())/float(num2.get()))
+    result.set(f"{x}")
+def quit():
+    calc.destroy()
+def clear():
+    calc.update()
+    result.set(f"")
+    num1.set(f"")
+    num2.set(f"")
+
+
+button1=Button(calc,text="Add",command=add,fg='blue',bg='light blue')
+button2=Button(calc,text="Subtract",command=subtract,fg='blue',bg='light blue')
+button3=Button(calc,text="Multiply",command=multiply,fg='blue',bg='light blue')
+button4=Button(calc,text="Division",command=division,fg='blue',bg='light blue')
+button5=Button(calc,text='Quit',command=quit,fg='blue',bg='light blue')
+button6=Button(calc,text="AC",command=clear,fg='blue',bg='light blue')
+
+button1.place(x=80,y=170)
+button2.place(x=120,y=170)
+button3.place(x=180,y=170)
+button4.place(x=240,y=170)
+button5.place(x=300,y=170)
+button6.place(x=340,y=170)
+
+calc.mainloop()
