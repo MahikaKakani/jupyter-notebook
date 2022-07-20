@@ -1,0 +1,42 @@
+# GUI Calendar using Tkinter
+from tkinter import *
+import calendar
+x=True
+
+cal=Tk()
+cal.geometry()
+cal.title("Calendar")
+label1=Label(cal,text="CALENDAR",font=('Times New Roman',20))
+label1.pack()
+label2=Label(cal,text="Enter the Year whose calendar you want to see",font=('Times New Roman',12))
+label2.pack()
+
+year=StringVar()
+e1=Entry(cal,textvariable=year)
+e1.pack()
+
+def exitt():
+    cal.destroy()
+    
+def showw():
+    new_cal=Tk()
+    new_cal.geometry("600x600")
+    new_cal.configure(background="white")
+    yearr=int(year.get())
+    new_cal.title(f"Calendar...{yearr}")
+    cal_content=calendar.calendar(yearr,1,1,10,3)
+    cal_year=Label(new_cal,text=cal_content,font='Consolas 10 bold',padx=30)
+    cal_year.pack()
+    new_cal.mainloop()
+#     return print(yearr,"is this!")
+
+#calendar.calendar(yyyy, w, l, c, m) 
+# w:date column width, l:number of lines per week
+# c:number of spaces between month's column, m:number of columns 
+
+show=Button(cal,text="Show",fg='Dark Green',bg='light blue',command=showw)
+show.pack()
+exit=Button(cal,text='Exit',fg='Dark Blue',bg='light blue',command=exitt)
+exit.pack()
+
+cal.mainloop()
