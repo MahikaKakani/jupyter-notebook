@@ -1,0 +1,243 @@
+from tkinter import *
+import random
+mark=Tk()
+mark.geometry('500x500')
+
+mark.title("Marksheet")
+namee=Label(mark,text="Name")
+namee.place(x=0,y=0)
+name=StringVar()
+e1=Entry(mark,textvariable=name,width=10)
+e1.place(x=60,y=0)
+roll=Label(mark,text="Roll No.")
+roll.place(x=0,y=20)
+rollno=StringVar()
+e2=Entry(mark,textvariable=rollno,width=10)
+e2.place(x=60,y=20)
+reg=Label(mark,text="Reg. No.")
+reg.place(x=200,y=0)
+regno=StringVar()
+e3=Entry(mark,textvariable=regno,width=10)
+e3.place(x=260,y=0)
+
+srno=Label(mark,text="Sr No.")
+subject=Label(mark,text="Subject")
+grade=Label(mark,text="Grade")
+sub_cre=Label(mark,text="Total Credit")
+cre_obt=Label(mark,text="Credit Obtained")
+
+srno.place(x=0,y=100)
+subject.place(x=80,y=100)
+grade.place(x=190,y=100)
+sub_cre.place(x=290,y=100)
+cre_obt.place(x=390,y=100)
+
+l1=Label(mark,text='1')
+l2=Label(mark,text='2')
+l3=Label(mark,text='3')
+l4=Label(mark,text='4')
+l1.place(x=10,y=120)
+l2.place(x=10,y=140)
+l3.place(x=10,y=160)
+l4.place(x=10,y=180)
+
+sub1=Label(mark,text='English')
+sub2=Label(mark,text='Hindi')
+sub3=Label(mark,text='Science')
+sub4=Label(mark,text='Mathematics')
+sub1.place(x=80,y=120)
+sub2.place(x=85,y=140)
+sub3.place(x=80,y=160)
+sub4.place(x=70,y=180)
+mark.update()
+g1=Entry(mark,width=10)
+g2=Entry(mark,width=10)
+g3=Entry(mark,width=10)
+g4=Entry(mark,width=10)
+g1.place(x=180,y=120)
+g2.place(x=180,y=140)
+g3.place(x=180,y=160)
+g4.place(x=180,y=180)
+
+sc1=Label(mark,text='10')
+sc2=Label(mark,text='10')
+sc3=Label(mark,text='10')
+sc4=Label(mark,text='10')
+sc1.place(x=310,y=120)
+sc2.place(x=310,y=140)
+sc3.place(x=310,y=160)
+sc4.place(x=310,y=180)
+
+def sheet():
+    naa='hey'
+    mark.update()
+    if e1.get()=='' or e2.get()=='' or e3.get()=='':
+        note=Label(mark,text='Please Enter Valid details for the Student!')
+        note.place(x=20,y=50)
+        return None
+    else:
+        total=0
+        note1=Label(mark,text=f"{e1.get()}'s Marksheet:",width=50)
+        note1.place(x=10,y=50)
+        if g1.get()=='O':
+            n1=10
+            ob1=Label(mark,text=n1)
+            total+=n1
+        elif g1.get()=='A':
+            n1=9
+            ob1=Label(mark,text=n1)
+            total+=n1
+        elif g1.get()=='B':
+            n1=8
+            ob1=Label(mark,text=n1)
+            total+=n1
+        elif g1.get()=='C':
+            n1=7
+            ob1=Label(mark,text=n1)
+            total+=n1
+        elif g1.get()=='D':
+            n1=6
+            ob1=Label(mark,text=n1)
+            total+=n1
+        elif g1.get()=='E':
+            n1=5
+            ob1=Label(mark,text=n1)
+            total+=n1
+        elif g1.get()=='F':
+            n1=0
+            ob1=Label(mark,text=n1)
+            total+=n1
+        else:
+            ob1=Label(mark,text="-")
+            naa='Grade NA'
+
+        ob1.place(x=400,y=120)
+        
+        if g2.get()=='O':
+            n1=10
+            ob2=Label(mark,text=n1)
+        elif g2.get()=='A':
+            n1=9
+            ob2=Label(mark,text=n1)
+            total+=n1
+        elif g2.get()=='B':
+            n1=8
+            ob2=Label(mark,text=n1)
+            total+=n1
+        elif g2.get()=='C':
+            n1=7
+            ob2=Label(mark,text=n1)
+            total+=n1
+        elif g2.get()=='D':
+            n1=6
+            ob2=Label(mark,text=n1)
+            total+=n1
+        elif g2.get()=='E':
+            n1=5
+            ob2=Label(mark,text=n1)
+            total+=n1
+        elif g2.get()=='F':
+            n1=0
+            ob2=Label(mark,text=n1)
+            total+=n1
+        else:
+            ob2=Label(mark,text="-")
+            naa='Grade NA'
+            
+        ob2.place(x=400,y=140)
+
+        if g3.get()=='O':
+            n1=10
+            ob3=Label(mark,text=n1)
+            total+=n1
+        elif g3.get()=='A':
+            n1=9
+            ob3=Label(mark,text=n1)
+            total+=n1
+        elif g3.get()=='B':
+            n1=8
+            ob3=Label(mark,text=n1)
+            total+=n1
+        elif g3.get()=='C':
+            n1=7
+            ob3=Label(mark,text=n1)
+            total+=n1
+        elif g3.get()=='D':
+            n1=6
+            ob3=Label(mark,text=n1)
+            total+=n1
+        elif g3.get()=='E':
+            n1=5
+            ob3=Label(mark,text=n1)
+            total+=n1
+        elif g3.get()=='F':
+            n1=0
+            ob3=Label(mark,text=n1)
+            total+=n1
+        else:
+            ob3=Label(mark,text="-")
+            naa='Grade NA'
+
+        ob3.place(x=400,y=160)
+        
+        if g4.get()=='O':
+            n1=10
+            ob4=Label(mark,text=n1)
+            total+=n1
+        elif g4.get()=='A':
+            n1=9
+            ob4=Label(mark,text=n1)
+            total+=n1
+        elif g4.get()=='B':
+            n1=8
+            ob4=Label(mark,text=n1)
+            total+=n1
+        elif g4.get()=='C':
+            n1=7
+            ob4=Label(mark,text=n1)
+            total+=n1
+        elif g4.get()=='D':
+            n1=6
+            ob4=Label(mark,text=n1)
+            total+=n1
+        elif g4.get()=='E':
+            n1=5
+            ob4=Label(mark,text=n1)
+            total+=n1
+        elif g4.get()=='F':
+            n1=0
+            ob4=Label(mark,text=n1)
+            total+=n1
+        else:
+            ob4=Label(mark,text="-")
+            naa='Grade NA'
+
+        ob4.place(x=400,y=180)
+        
+        if g1.get()=='F' or g2.get()=='F' or g3.get()=='F' or g4.get()=='F':
+            totall=Label(mark,text='---',width=8)
+            totall.place(x=400,y=220)
+            sgpaa=Label(mark,text='FAIL',width=8)
+            sgpaa.place(x=400,y=240)
+            return None
+        
+        if naa=='hey':
+#             print(total)
+            totall=Label(mark,text=total,width=8)
+            totall.place(x=400,y=220)
+            sgpaa=Label(mark,text=(total/4),width=8)
+            sgpaa.place(x=400,y=240)
+        
+        else:
+            totall=Label(mark,text='-',width=8)
+            totall.place(x=400,y=220)
+            sgpaa=Label(mark,text='-',width=8)
+            sgpaa.place(x=400,y=240)
+    
+tot_mar=Label(mark,text="Total Marks")
+tot_mar.place(x=280,y=220)
+per=Label(mark,text="sgpa")
+per.place(x=300,y=240)
+submit=Button(mark,text="Submit",fg='Black',bg='light grey',command=sheet)
+submit.place(x=200,y=300)
+mark.mainloop()
